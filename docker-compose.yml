@@ -1,0 +1,30 @@
+# ============================================================
+# docker-compose.yml para Proyecto RA1 - Data Warehouse ETL
+# ============================================================
+# Este archivo permite ejecutar el proyecto completo en Docker
+# ============================================================
+
+version: '3.8'
+
+services:
+  # Servicio principal con Jupyter Notebook
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ra1_datawarehouse
+    ports:
+      - "8888:8888"  # Puerto para Jupyter Notebook
+    volumes:
+      # Montar directorios para persistir datos
+      - ./data:/app/data
+      - ./notebooks:/app/notebooks
+      - ./warehouse:/app/warehouse
+      - ./docs:/app/docs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    working_dir: /app
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+    restart: unless-stopped
+
