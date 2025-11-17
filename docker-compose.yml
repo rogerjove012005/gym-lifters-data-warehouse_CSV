@@ -4,8 +4,6 @@
 # Este archivo permite ejecutar el proyecto completo en Docker
 # ============================================================
 
-version: '3.8'
-
 services:
   # Servicio principal con Jupyter Notebook
   jupyter:
@@ -25,6 +23,6 @@ services:
       - PYTHONUNBUFFERED=1
       - JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
     working_dir: /app
-    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token= --NotebookApp.password=
     restart: unless-stopped
 
