@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.db
+*.db-journal
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+
+# Docker
+.docker/

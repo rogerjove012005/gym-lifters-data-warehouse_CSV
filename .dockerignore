@@ -19,6 +19,7 @@ ENV/
 *.ipynb_checkpoints/
 .DS_Store
 *.log
+logs/
 *.pdf
 node_modules/
 .pytest_cache/
