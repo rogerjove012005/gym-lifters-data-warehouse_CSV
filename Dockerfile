@@ -33,22 +33,12 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 # Crear directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos de requisitos (si existen) o instalar directamente
-COPY requirements.txt* ./
+# Copiar archivos de requisitos primero (optimiza cache de Docker)
+COPY requirements.txt ./
 
 # Instalar dependencias de Python
 RUN pip install --upgrade pip && \
-    pip install \
-    pandas==2.1.4 \
-    numpy==1.24.3 \
-    pyspark==3.5.0 \
-    jupyter==1.0.0 \
-    notebook==7.0.6 \
-    sqlalchemy==2.0.23 \
-    ipykernel==6.27.1
-
-# Si existe requirements.txt, instalarlo también
-RUN if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    pip install --no-cache-dir -r requirements.txt
 
 # Crear directorios necesarios
 RUN mkdir -p /app/data \
