@@ -18,3 +18,7 @@ ipykernel==6.27.1
 # Base de datos
 sqlalchemy==2.0.23
 
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+
